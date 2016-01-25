@@ -6,18 +6,22 @@ $(function() {
 		return results[1] || 0;
 	}
 
-	if ($.urlParam('file') != undefined) {
-		$("#script").load("scripts/" + $.urlParam('file'), function (response, status, xhr) {
+	var param = $.urlParam('file');
+
+	if (param != undefined) {
+		$("#script").load("scripts/" + param, function (response, status, xhr) {
 			if (status == "error") {
-				$("#script").load("scripts/" + $.urlParam('file') + ".txt", function (response, status, xhr) {
+				$("#script").load("scripts/" + param + ".txt", function (response, status, xhr) {
 					if (status == "error") {
-						alert("No file found: " + $.urlParam('file'));
+						alert("No file found: " + param);
 					} else {
 						$("#marker").show();
+						document.title = "ZettaPrompt || " + param + ".txt";
 					}
 				});
 			} else {
 				$("#marker").show();
+				document.title = "ZettaPrompt || " + param;
 			}
 		});
 	} else {
