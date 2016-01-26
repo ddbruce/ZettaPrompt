@@ -1,12 +1,19 @@
+function script_bottom_padding() {
+	var scriptbottompadding = $(window).height() - 320;
+	$("#script").css("padding-bottom", scriptbottompadding);
+}
+
 $(function() {
 
 	var speed = 0;
 	var savedspeed = 0;
 	var scriptstatus = 0;
 
-	var scriptbottompadding = $(window).height() - 320;
-	console.log(scriptbottompadding);
-	$("#script").css("padding-bottom", scriptbottompadding);
+	script_bottom_padding();
+
+	window.onresize = function(e) {
+		script_bottom_padding();
+	};
 
 	$.urlParam = function(name) {
 		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
