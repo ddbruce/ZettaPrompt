@@ -33,7 +33,7 @@
 }
 
 ::-webkit-scrollbar { 
-    display: none; 
+	display: none; 
 }
 
 html {
@@ -46,7 +46,8 @@ html {
 body {
 	background-color: black;
 	font-family: "OpenSans";
-
+	-webkit-font-smoothing: antialiased !important;
+	scroll-behavior: smooth !important;
 }
 
 form {
