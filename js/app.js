@@ -4,6 +4,10 @@ $(function() {
 	var savedspeed = 0;
 	var scriptstatus = 0;
 
+	var scriptbottompadding = $(window).height() - 320;
+	console.log(scriptbottompadding);
+	$("#script").css("padding-bottom", scriptbottompadding);
+
 	$.urlParam = function(name) {
 		var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
 		if (results == null) return null;
