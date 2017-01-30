@@ -70,7 +70,7 @@ $(function() {
 			} else if (e.which == 40 && !e.shiftKey) {
 				e.preventDefault();
 				speed += 1;
-			} else if (e.which == 40 && e.shiftKey) { 
+			} else if (e.which == 40 && e.shiftKey) {
 				e.preventDefault();
 				window.scrollBy(0, 150);
 			} else if (e.which == 38 && !e.shiftKey) {
@@ -79,22 +79,22 @@ $(function() {
 			} else if (e.which == 38 && e.shiftKey) {
 				e.preventDefault();
 				window.scrollBy(0, -150);
-			} else if (e.which == 70 && !e.shiftKey && !e.ctrlKey) { 
+			} else if (e.which == 70 && !e.shiftKey && !(e.ctrlKey || e.metaKey)) {
 				e.preventDefault();
 				speed = 2;
-			} else if ((e.which == 70 && e.shiftKey && !e.ctrlKey) != (e.which == 70 && !e.shiftKey && e.ctrlKey)) {
+			} else if ((e.which == 70 && e.shiftKey && !(e.ctrlKey || e.metaKey)) != (e.which == 70 && !e.shiftKey && (e.ctrlKey || e.metaKey))) {
 				e.preventDefault();
 				speed = 3;
-			} else if (e.which == 70 && e.shiftKey && e.ctrlKey) { 
+			} else if (e.which == 70 && e.shiftKey && (e.ctrlKey || e.metaKey)) {
 				e.preventDefault();
 				speed = 4;
-			} else if (e.which == 82 && !e.shiftKey && !e.ctrlKey) {
+			} else if (e.which == 82 && !e.shiftKey && !(e.ctrlKey || e.metaKey)) {
 				e.preventDefault();
 				speed = -2;
-			} else if ((e.which == 82 && e.shiftKey && !e.ctrlKey) != (e.which == 82 && !e.shiftKey && e.ctrlKey)) {
+			} else if ((e.which == 82 && e.shiftKey && !(e.ctrlKey || e.metaKey)) != (e.which == 82 && !e.shiftKey && (e.ctrlKey || e.metaKey))) {
 				e.preventDefault();
 				speed = -3;
-			} else if (e.which == 82 && e.shiftKey && e.ctrlKey) {
+			} else if (e.which == 82 && e.shiftKey && (e.ctrlKey || e.metaKey)) {
 				e.preventDefault();
 				speed = -4;
 			}
