@@ -3,6 +3,7 @@ function script_bottom_padding() {
 	$("#script").css("padding-bottom", scriptbottompadding);
 }
 
+
 $(function() {
 
 	var speed = 0;
@@ -101,8 +102,42 @@ $(function() {
 		}
 	});
 
-setInterval(function() {
-	window.scrollBy(0, 1 * speed);
-}, 33);
+	var gamepads = {};
+
+	function gamepadLoop(gamepadIndex) {
+		gamepad = gamepads[gamepadIndex];
+		setInterval(function() {
+			navigator.getGamepads();
+			if (Math.abs(gamepad.axes[1]) < 0.01) {
+				speed = 0;
+			} else {
+				multiplier = (((gamepad.axes[6] * -1) + 1) * 5) + 1;
+				joystickspeed = gamepad.axes[1] * 2.5;
+				speed = Math.floor(joystickspeed * multiplier);
+				console.log("joystickspeed: " + joystickspeed);
+				console.log("speed: " + speed);
+			}
+			console.log(gamepad.axes[1]);
+		}, 100)
+	}
+
+	function gamepadHandler(event, connecting) {
+		var gamepad = event.gamepad;
+
+		if (connecting) {
+			gamepads[gamepad.index] = gamepad;
+			gamepadLoop(gamepad.index);
+		} else {
+			delete gamepads[gamepad.index];
+		}
+	}
+
+
+	window.addEventListener("gamepadconnected", function(e) { gamepadHandler(e, true); }, false);
+	window.addEventListener("gamepaddisconnected", function(e) { gamepadHandler(e, false); }, false);
+
+	setInterval(function() {
+		window.scrollBy(0, 1 * speed);
+	}, 33);
 
 });
